@@ -1,4 +1,4 @@
-package com.esmaeel.anim
+package com.esmaeel.anim.Utils
 
 import android.app.Activity
 import android.view.View
@@ -6,17 +6,20 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.transition.TransitionManager
+import com.esmaeel.anim.R
 
-class BottomDialog(private val activity: Activity) {
+class BottomRevealDialog(private val activity: Activity) {
     private val background = RelativeLayout(activity)
     private lateinit var childView: ViewGroup
 
     init {
-        background.setBackgroundColor(ContextCompat.getColor(activity, R.color.blackTransparent))
+        background.setBackgroundColor(ContextCompat.getColor(activity,
+            R.color.blackTransparent
+        ))
         setCancelable(true)
         background.setOnClickListener { dismiss() }
     }
-    fun setView(view: ViewGroup): BottomDialog {
+    fun setView(view: ViewGroup): BottomRevealDialog {
         childView = view
         setToBottom(view)
         return this
@@ -28,7 +31,7 @@ class BottomDialog(private val activity: Activity) {
         background.addView(view, param)
     }
 
-    fun setCancelable(value: Boolean): BottomDialog {
+    fun setCancelable(value: Boolean): BottomRevealDialog {
         background.isClickable = value
         background.isFocusable = value
         return this
@@ -42,12 +45,12 @@ class BottomDialog(private val activity: Activity) {
         TransitionManager.beginDelayedTransition(view)
     }
 
-    fun show(): BottomDialog {
+    fun show(): BottomRevealDialog {
         activity.window.decorView.findViewById<ViewGroup>(android.R.id.content).addView(background)
         return this
     }
 
-    fun dismiss(): BottomDialog {
+    fun dismiss(): BottomRevealDialog {
         activity.window.decorView.findViewById<ViewGroup>(android.R.id.content).removeView(background)
         return this
     }

@@ -1,4 +1,4 @@
-package com.esmaeel.anim.MainExample
+package com.esmaeel.anim.MainExample.Models
 
 data class ProfileResponse(
     val `data`: Data? = Data(),

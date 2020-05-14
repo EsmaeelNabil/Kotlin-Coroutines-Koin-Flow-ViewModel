@@ -1,6 +1,7 @@
 package com.esmaeel.anim.MainExample
 
-import com.esmaeel.anim.ApiManagerDefault.Constants
+import com.esmaeel.anim.Base.Constants
+import com.esmaeel.anim.MainExample.Models.ProfileResponse
 import com.esmaeel.pr.di.Modules.WebService
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.KoinComponent

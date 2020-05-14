@@ -3,6 +3,7 @@ package com.esmaeel.anim.MainExample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.esmaeel.anim.Koin.Network.Status
 import com.esmaeel.anim.Base.BaseActivity
 import com.esmaeel.anim.R
 import kotlinx.android.synthetic.main.activity_main.*

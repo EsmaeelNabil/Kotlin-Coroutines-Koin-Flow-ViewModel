@@ -1,4 +1,4 @@
-package com.esmaeel.anim.Koin
+package com.esmaeel.anim.Utils
 
 import android.app.Dialog
 import android.content.Context

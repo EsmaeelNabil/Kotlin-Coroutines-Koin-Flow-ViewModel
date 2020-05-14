@@ -5,7 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-object CoManager {
+object CoroutinesManager {
 
     fun onMainThread(givenFunction: suspend (() -> Unit)) {
         CoroutineScope(Dispatchers.Main).launch {

@@ -1,10 +1,10 @@
-package com.esmaeel.anim.ApiManagerDefault;
+package com.esmaeel.anim.MainExample.Models;
 
 
 import java.io.Serializable;
 import java.util.List;
 
-public class CountriesResponse extends ResponseHolder{
+public class CountriesResponse {
 
     /**
      * status : true

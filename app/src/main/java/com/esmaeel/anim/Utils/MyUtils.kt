@@ -1,4 +1,4 @@
-package com.esmaeel.anim
+package com.esmaeel.anim.Utils
 
 import android.app.Activity
 import android.app.Dialog
@@ -8,6 +8,7 @@ import android.view.WindowManager
 import com.esmaeel.anim.Base.ErrorModel
 import com.esmaeel.anim.Base.ShowLoaderBus
 import com.esmaeel.anim.Base.ShowLoaderBusWithTouch
+import com.esmaeel.anim.R
 import com.google.gson.Gson
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
@@ -31,7 +32,8 @@ object MyUtils {
     @JvmStatic
     fun getError(errorBody: ResponseBody): String {
         errorBody.let {
-            var error = getGson().fromJson(errorBody?.string(), ErrorModel::class.java)
+            var error = getGson()
+                .fromJson(errorBody?.string(), ErrorModel::class.java)
             return getErrorsString(errorList = error.msg)
         }
         return uKnownError
@@ -52,7 +54,11 @@ object MyUtils {
 
     fun getExceptionErrorString(throwable: Throwable): String? {
         return if (throwable is HttpException) {
-            throwable.response()?.errorBody()?.let { getError(it) }
+            throwable.response()?.errorBody()?.let {
+                getError(
+                    it
+                )
+            }
         } else {
             throwable.message
         }

@@ -3,7 +3,7 @@ package com.esmaeel.anim.Base
 import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.esmaeel.anim.Koin.Loader
+import com.esmaeel.anim.Utils.Loader
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

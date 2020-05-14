@@ -1,7 +1,7 @@
 package com.esmaeel.pr.di.Modules
 
-import com.esmaeel.anim.ApiManagerDefault.CountriesResponse
-import com.esmaeel.anim.MainExample.ProfileResponse
+import com.esmaeel.anim.MainExample.Models.CountriesResponse
+import com.esmaeel.anim.MainExample.Models.ProfileResponse
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import retrofit2.http.GET

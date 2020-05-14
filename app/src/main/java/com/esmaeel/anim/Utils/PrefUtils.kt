@@ -1,7 +1,7 @@
 package com.esmaeel.anim.Utils
 
 import android.content.Context
-import com.esmaeel.anim.ApiManagerDefault.Constants
+import com.esmaeel.anim.Base.Constants
 
 object PrefUtils {
     @JvmStatic

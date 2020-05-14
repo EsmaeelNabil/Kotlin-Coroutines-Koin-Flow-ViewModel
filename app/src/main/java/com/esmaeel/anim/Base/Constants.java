@@ -1,4 +1,4 @@
-package com.esmaeel.anim.ApiManagerDefault;
+package com.esmaeel.anim.Base;
 
 public class Constants {
     public static String BASE_URL = "https://beauty.vrouapp.com/api-v3/";
