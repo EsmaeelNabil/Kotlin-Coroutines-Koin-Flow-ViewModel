@@ -7,9 +7,12 @@ import com.esmaeel.anim.Utils.Loader
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import org.koin.android.ext.android.inject
 
 
 public open class BaseActivity : AppCompatActivity() {
+
+    private val loaderClass: Loader by inject()
     var loader: Dialog? = null
     var loaderWithTouch: Dialog? = null
 
@@ -28,20 +31,8 @@ public open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loader = Loader(this).getLoader();
-        loaderWithTouch = Loader(this).getLoaderWithTouch();
-    }
-
-    override fun onResume() {
-        super.onResume()
-        loader = Loader(this).getLoader();
-        loaderWithTouch = Loader(this).getLoaderWithTouch();
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        loader = null;
-        loaderWithTouch = null;
+        loader = loaderClass.getLoader(this)
+        loaderWithTouch = loaderClass.getLoaderWithTouch(this)
     }
 
 

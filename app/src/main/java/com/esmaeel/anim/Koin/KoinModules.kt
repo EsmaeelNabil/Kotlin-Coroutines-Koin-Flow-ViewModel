@@ -5,8 +5,9 @@ import com.esmaeel.anim.Base.Constants
 import com.esmaeel.anim.BuildConfig
 import com.esmaeel.anim.MainExample.GlobalPresenter
 import com.esmaeel.anim.MainExample.GlobalViewModel
-import com.esmaeel.anim.Utils.MyUtils
 import com.esmaeel.anim.R
+import com.esmaeel.anim.Utils.Loader
+import com.esmaeel.anim.Utils.MyUtils
 import com.esmaeel.anim.Utils.PrefUtils
 import com.esmaeel.pr.di.Modules.WebService
 import com.google.gson.Gson
@@ -27,6 +28,8 @@ val appModule = module {
     /*Single : creates one instance*/
     single { ActivityProvider(get()) }
 
+
+    single { Loader() }
     factory { GlobalPresenter() }
     single { GlobalViewModel(get()) }
 
@@ -57,10 +60,24 @@ val networkModule = module {
         )
     }
 
-    single(named(Constants.LOCALE_SERVICE)) { getLocalApiService(get(named(
-        Constants.LOCALE_CLIENT))) }
-    single(named(Constants.AUTH_SERVICE)) { getAuthApiService(get(named(
-        Constants.AUTH_CLIENT))) }
+    single(named(Constants.LOCALE_SERVICE)) {
+        getLocalApiService(
+            get(
+                named(
+                    Constants.LOCALE_CLIENT
+                )
+            )
+        )
+    }
+    single(named(Constants.AUTH_SERVICE)) {
+        getAuthApiService(
+            get(
+                named(
+                    Constants.AUTH_CLIENT
+                )
+            )
+        )
+    }
 
 }
 

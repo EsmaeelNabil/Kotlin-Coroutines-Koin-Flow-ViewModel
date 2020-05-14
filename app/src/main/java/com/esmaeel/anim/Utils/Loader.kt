@@ -5,11 +5,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.WindowManager
 import com.esmaeel.anim.R
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 
-class Loader(val context: Context?) {
+class Loader() {
 
-    fun getLoader(): Dialog? {
+    fun getLoader( context: Context): Dialog? {
         context?.let {
             val dialog = Dialog(context)
             val view = LayoutInflater.from(context).inflate(R.layout.loader_layout, null);
@@ -22,10 +24,11 @@ class Loader(val context: Context?) {
         return null
     }
 
-    fun getLoaderWithTouch(): Dialog? {
+    fun getLoaderWithTouch( context: Context): Dialog? {
         context?.let {
             val dialog = Dialog(context)
-            val view = LayoutInflater.from(context).inflate(R.layout.loader_layout_with_touch, null);
+            val view =
+                LayoutInflater.from(context).inflate(R.layout.loader_layout_with_touch, null);
             dialog.setCancelable(false)
             dialog.setContentView(view)
             dialog.getWindow()!!.setBackgroundDrawableResource(android.R.color.transparent)
