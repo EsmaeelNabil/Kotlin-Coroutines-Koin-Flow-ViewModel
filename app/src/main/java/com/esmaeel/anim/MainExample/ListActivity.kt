@@ -59,7 +59,7 @@ class ListActivity : BaseActivity() {
 
 //                    list?.addAll(contract.data?.data?.salons ?: listOf())
 //                    println(list?.size)
-                    centersAdapter.submitList(listOf(contract.data?.data?.salons))
+                    centersAdapter.submitList(contract.data?.data?.salons)
 
                 }
                 Status.LOADING -> {
