@@ -6,7 +6,10 @@ import androidx.lifecycle.Observer
 import com.esmaeel.anim.Koin.Network.Status
 import com.esmaeel.anim.Base.BaseActivity
 import com.esmaeel.anim.R
+import com.esmaeel.pr.CoroutinesManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.time.ExperimentalTime
 
@@ -19,6 +22,19 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val flow = flow{
+            val ss = mutableListOf<String>()
+            ss.add("ee")
+            emit(ss)
+        }
+
+//        CoroutinesManager.onMainThread {
+//            flow.collect{value ->
+//                println(value.first())
+//            }
+//        }
+
 
 
         setupUI()

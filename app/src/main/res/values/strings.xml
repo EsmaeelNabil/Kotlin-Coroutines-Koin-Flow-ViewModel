@@ -2,5 +2,6 @@
     <string name="app_name">anim</string>
     <string name="html_error">\"خطأ فى الاتصال ، حاول مجددا!\"</string>
     <string name="loader" translatable="false">BallScaleMultipleIndicator</string>
+    <string name="retry">Retry</string>
 
 </resources>

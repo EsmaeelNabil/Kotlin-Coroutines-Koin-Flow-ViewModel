@@ -4,9 +4,14 @@
     <!--    <color name="colorPrimary">#339933</color>-->
     <!--    <color name="colorPrimaryDark">#036885</color>-->
 
-    <color name="colorAccent">#028DB6</color>
-    <color name="colorPrimary">#02B0E4</color>
-    <color name="colorPrimaryDark">#036885</color>
+    <color name="primaryColor">#304ffe</color>
+    <color name="primaryLightColor">#7a7cff</color>
+    <color name="primaryDarkColor">#0026ca</color>
+    <color name="secondaryColor">#2962ff</color>
+    <color name="secondaryLightColor">#768fff</color>
+    <color name="secondaryDarkColor">#0039cb</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
 
 
     <!--reds-->

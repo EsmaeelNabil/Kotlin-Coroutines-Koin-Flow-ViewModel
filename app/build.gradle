@@ -114,4 +114,9 @@ dependencies {
 
     implementation 'org.greenrobot:eventbus:3.2.0'
 
+
+    implementation 'com.aminography:beziercurvebulgelayout:1.0.2'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+
 }

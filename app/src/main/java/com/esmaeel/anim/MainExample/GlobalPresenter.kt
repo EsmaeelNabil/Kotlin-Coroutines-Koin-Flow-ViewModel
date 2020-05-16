@@ -2,8 +2,12 @@ package com.esmaeel.anim.MainExample
 
 import com.esmaeel.anim.Base.Constants
 import com.esmaeel.anim.MainExample.Models.ProfileResponse
+import com.esmaeel.anim.MainExample.Models.CenterResponse
 import com.esmaeel.pr.di.Modules.WebService
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.flow.flow
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.koin.core.qualifier.named
@@ -16,9 +20,16 @@ public class GlobalPresenter() : KoinComponent /* meaning look in modules for th
 
     suspend fun getCountries() = mServiceLocale.getCountries()
 
-    suspend fun getUserDetailsFlow(): Flow<Response<ProfileResponse>> =
-        mServiceAuth.getUserDetailsFlow()
+    suspend fun getUserDetailsFlow() = flow {
+        emit(mServiceAuth.getUserDetailsFlow())
+    }
 
     suspend fun getUserDetails(): Response<ProfileResponse> = mServiceAuth.getUserDetails()
+
+    fun getSalons(pageNumber: Int, randomKey: Int): Single<CenterResponse> =
+        mServiceAuth.getFilteredCentersRx(page = pageNumber, random_order_key = randomKey)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
 
 }
