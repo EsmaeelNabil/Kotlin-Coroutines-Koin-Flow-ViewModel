@@ -7,19 +7,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.esmaeel.anim.Base.ViewsEvents
+import com.esmaeel.anim.Base.ViewContract
 import com.esmaeel.anim.MainExample.Models.CenterResponse
 import com.esmaeel.anim.databinding.CenterItemBinding
 
 class CentersAdapter() :
     ListAdapter<CenterResponse.Data.Salon, CentersAdapter.CentersHolder>(CentersDiffUtil) {
-    val clickEvent: MutableLiveData<ViewsEvents> = MutableLiveData()
+    val clickEvent: MutableLiveData<ViewContract<CenterResponse.Data.Salon>> = MutableLiveData()
 
     private object CentersDiffUtil : DiffUtil.ItemCallback<CenterResponse.Data.Salon>() {
         override fun areItemsTheSame(
             oldItem: CenterResponse.Data.Salon,
             newItem: CenterResponse.Data.Salon
-        ) = oldItem.id == newItem.id
+        ) = oldItem == newItem
 
         override fun areContentsTheSame(
             oldItem: CenterResponse.Data.Salon,
@@ -27,9 +27,9 @@ class CentersAdapter() :
         ) = oldItem.id == newItem.id
     }
 
-    override fun submitList(list: List<CenterResponse.Data.Salon?>?) {
-        super.submitList(list?.let { ArrayList(it) })
-    }
+//    override fun submitList(list: List<CenterResponse.Data.Salon?>?) {
+//        super.submitList(list?.let { ArrayList(it) })
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         CentersHolder(CenterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -39,11 +39,15 @@ class CentersAdapter() :
         holder.bindViews(getItem(position), clickEvent)
     }
 
+    fun submitLists(salons: List<CenterResponse.Data.Salon?>?) {
+
+    }
+
     class CentersHolder(val binder: CenterItemBinding) : RecyclerView.ViewHolder(binder.root) {
 
         fun bindViews(
             salon: CenterResponse.Data.Salon?,
-            clickEvent: MutableLiveData<ViewsEvents>
+            clickEvent: MutableLiveData<ViewContract<CenterResponse.Data.Salon>>
         ) {
             salon?.let {
                 binder.centerCenterName.text = it.salon_name
@@ -54,7 +58,7 @@ class CentersAdapter() :
                     .into(binder.centerSalonImage)
 
                 binder.root.setOnClickListener {
-                    clickEvent.postValue(ViewsEvents.onItemClicked(absoluteAdapterPosition, salon))
+                    clickEvent.value = ViewContract.onClick(salon)
                 }
             }
         }

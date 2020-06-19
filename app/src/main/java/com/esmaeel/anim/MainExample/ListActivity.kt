@@ -56,11 +56,7 @@ class ListActivity : BaseActivity() {
                     hideLoader()
                     hasMore = contract.data?.pagination?.has_more_pages ?: false
                     randomKey = contract.data?.data?.random_order_key ?: -1
-
-//                    list?.addAll(contract.data?.data?.salons ?: listOf())
-//                    println(list?.size)
                     centersAdapter.submitList(contract.data?.data?.salons)
-
                 }
                 Status.LOADING -> {
                     showLoader()

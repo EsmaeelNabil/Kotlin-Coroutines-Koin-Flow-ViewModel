@@ -1,8 +1,10 @@
 package com.esmaeel.anim.MainExample
 
 import com.esmaeel.anim.Base.Constants
-import com.esmaeel.anim.MainExample.Models.ProfileResponse
+import com.esmaeel.anim.Koin.Network.Contract
 import com.esmaeel.anim.MainExample.Models.CenterResponse
+import com.esmaeel.anim.MainExample.Models.ProfileResponse
+import com.esmaeel.anim.Utils.MyUtils
 import com.esmaeel.pr.di.Modules.WebService
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -31,5 +33,32 @@ public class GlobalPresenter() : KoinComponent /* meaning look in modules for th
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
+    fun getSalonsFlow(pageNumber: Int, randomKey: Int) = flow {
+        emit(Contract.onLoading(data = null))
+        try {
+            val response =
+                mServiceAuth.getFlowCenters(page = pageNumber, random_order_key = randomKey)
+            if (response.isSuccessful) {
+                emit(Contract.onSuccess(data = response.body()))
+            } else {
+                response.errorBody()?.let { errorBody ->
+                    emit(
+                        Contract.onError(
+                            data = null,
+                            message = MyUtils.getError(errorBody)
+                        )
+                    )
+                }
+            }
+        } catch (a: Exception) {
+            emit(
+                Contract.onError(
+                    data = null,
+                    message = MyUtils.getError(a)
+                )
+            )
+        }
+
+    }
 
 }

@@ -16,6 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:lines="1"
             android:text="Center Name"
@@ -23,6 +24,7 @@
             android:textColor="@color/white"
             android:textDirection="locale"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/center_salon_image"
             app:layout_constraintTop_toTopOf="@+id/center_salon_image" />
 

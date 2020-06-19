@@ -16,6 +16,7 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.ResponseBody
 import okhttp3.ResponseBody.Companion.toResponseBody
+import okio.IOException
 import org.greenrobot.eventbus.EventBus
 import retrofit2.HttpException
 import java.util.*
@@ -120,6 +121,14 @@ object MyUtils {
             .receivedResponseAtMillis(System.currentTimeMillis())
             .code(statusCode!!)
             .build()
+    }
+
+    fun getError(exception: Exception): String {
+        return if (exception is IOException ){
+            "No Internet it is disconnected!"
+        }else {
+            exception.localizedMessage
+        }
     }
 
 

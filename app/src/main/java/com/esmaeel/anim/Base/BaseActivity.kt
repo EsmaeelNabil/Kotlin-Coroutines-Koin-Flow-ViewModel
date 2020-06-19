@@ -17,7 +17,7 @@ import org.greenrobot.eventbus.ThreadMode
 import org.koin.android.ext.android.inject
 
 
-public open class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
     private val loaderClass: Loader by inject()
     var loader: Dialog? = null
