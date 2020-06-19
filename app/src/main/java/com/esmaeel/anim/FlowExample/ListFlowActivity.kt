@@ -1,4 +1,4 @@
-package com.esmaeel.anim.MainExample
+package com.esmaeel.anim.FlowExample
 
 import android.os.Bundle
 import android.widget.Toast
@@ -6,6 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.esmaeel.anim.Base.BaseActivity
 import com.esmaeel.anim.Koin.Network.Status
+import com.esmaeel.anim.MainExample.CentersAdapter
+import com.esmaeel.anim.MainExample.GlobalViewModel
 import com.esmaeel.anim.MainExample.Models.CenterResponse
 import com.esmaeel.anim.R
 import com.esmaeel.anim.Utils.EndlessRecyclerOnScrollListener

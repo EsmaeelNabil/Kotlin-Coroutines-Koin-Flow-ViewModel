@@ -25,7 +25,7 @@
 <!--            </intent-filter>-->
         </activity>
 
-        <activity android:name=".MainExample.ListFlowActivity">
+        <activity android:name=".FlowExample.ListFlowActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
